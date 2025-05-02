@@ -110,6 +110,7 @@
     gh
     vscode
     discord
+    stow
   ];
 
 
