@@ -24,6 +24,7 @@
         inherit system;
         modules = [
           ./nixos/configuration.nix
+          ./modules/kde.nix
         ];
       };
     };
