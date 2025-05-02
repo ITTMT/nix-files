@@ -5,11 +5,27 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs }: 
+  let
+    system = "x86_64-linux";
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+    pkgs = import nixpkgs {
+      inherit system;
 
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+      config = {
+        allowUnfree = true;
+      };
+    };
+  
+  in
+  {
+    nixosConfigurations = {
+      myNixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./nixos/configuration.nix
+        ];
+      };
+    };
   };
 }
