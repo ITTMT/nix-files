@@ -23,6 +23,8 @@
       myNixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
+          ({ config, ... }: { nixpkgs.config.allowUnfree = true; })
+
           ./nixos/configuration.nix
           ./modules/software.nix
           ./modules/kde.nix
