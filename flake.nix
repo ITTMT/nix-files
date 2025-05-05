@@ -27,7 +27,8 @@
 
           ./nixos/configuration.nix
           ./modules/software.nix
-          ./modules/kde.nix
+          # ./modules/kde.nix
+          ./modules/hyprland.nix
         ];
       };
     };
