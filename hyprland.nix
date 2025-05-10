@@ -24,6 +24,6 @@
     hyprlock
     hypridle
     hyprpaper
-    dolphin
+    nautilus
   ];
 }
