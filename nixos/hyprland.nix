@@ -2,17 +2,14 @@
 {
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    withUWSM = true;
   };
 
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    libinput.enable = true;
-  };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  services.displayManager.sddm.enable = false;
-  services.displayManager.sddm.wayland.enable = true;
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
 
   environment.systemPackages = with pkgs; [
     kitty
@@ -23,5 +20,9 @@
     grim          # Screenshot tool for Wayland
     slurp         # Region selector for screenshots
     xdg-desktop-portal-hyprland # For Wayland desktop portals
+    hyprcursor
+    hyprlock
+    hypridle
+    hyprpaper
   ];
 }
