@@ -22,11 +22,6 @@
     wifi.backend = "iwd";
   };
 
-  services.gnome-keyring = {
-    enable = true;
-    components = [ "secrets" "ssh" ];
-  };
-  
   # Set your time zone.
   time.timeZone = "Europe/London";
 
