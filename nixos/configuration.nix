@@ -18,7 +18,22 @@
   networking.hostName = "nixos"; # Define your hostname.
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  age.secrets.networking = {
+    file = ../secrets/wifi-credentials.secret.age;
+    owner = "ollie";
+    group = "ollie";
+  }
+
+  networking.networkmanager = {
+    enable = true;
+
+    wpa_supplicantSecrets =  = {
+      "SmithFamily" = {
+        psk = config.age.secrets.networking.path;
+      }
+    }
+
+  };
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -66,8 +81,6 @@
     description = "Oliver Smith";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
     ];
   };
 

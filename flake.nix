@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs }: 
+  outputs = { self, nixpkgs, agenix, ... }: 
   let
     system = "x86_64-linux";
 
@@ -24,7 +25,7 @@
         inherit system;
         modules = [
           ({ config, ... }: { nixpkgs.config.allowUnfree = true; })
-
+          agenix.nixosModule.default
           ./nixos/configuration.nix
           ./modules/software.nix
           # ./modules/kde.nix

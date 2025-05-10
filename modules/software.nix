@@ -6,6 +6,7 @@
     vscode
     discord
     stow
+    age
   ];
 
   programs.steam = {
