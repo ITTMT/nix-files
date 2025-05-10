@@ -15,25 +15,43 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Enable networking
-  age.secrets.networking = {
-    file = ../secrets/wifi-credentials.secret.age;
-    owner = "ollie";
-    group = "ollie";
-  }
 
-  networking.networkmanager = {
-    enable = true;
-
-    wpa_supplicantSecrets =  = {
-      "SmithFamily" = {
-        psk = config.age.secrets.networking.path;
-      }
-    }
-
+  age.identityPaths = [ "/home/ollie/.ssh/id_ed25519.pub"];
+  age.secrets.nm-secrets = {
+    file = ./../secrets/nm-secret.age;
+    owner = "root";
+    group = "root";
   };
+ 
+  networking.networkmanager.ensureProfiles = {
+    environmentFiles = [
+      config.age.screts.nm-secrets.path
+    ];
+
+    profiles = {
+      Home = {
+        connection = {
+          id = "SmithFamily";
+          type = "wifi";
+        };
+        ipv4 = {
+          method = "auto";
+        };
+        wifi = {
+          mode = "infrastructure";
+          ssid = "SmithFamily";
+        };
+        wifi-security = {
+          key-mgmt = "wpa-psk";
+          psk = "$HOME_PSK";
+        };
+      };
+    };
+  };
+  
   # Set your time zone.
   time.timeZone = "Europe/London";
 

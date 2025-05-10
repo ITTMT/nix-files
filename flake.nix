@@ -6,7 +6,12 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, agenix, ... }: 
+  outputs = { 
+    self, 
+    nixpkgs, 
+    agenix, 
+    ... 
+  }: 
   let
     system = "x86_64-linux";
 
@@ -25,7 +30,7 @@
         inherit system;
         modules = [
           ({ config, ... }: { nixpkgs.config.allowUnfree = true; })
-          agenix.nixosModule.default
+          agenix.nixosModules.default
           ./nixos/configuration.nix
           ./modules/software.nix
           # ./modules/kde.nix
