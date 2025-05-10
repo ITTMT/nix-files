@@ -15,9 +15,4 @@
     enable = true;
     wantedBy = [ "default.target" ];
   };
-
-  environment.variables = {
-    SSH_AUTH_SOCK = "${config.services.gnome.gnome-keyring.socketDir}/ssh";
-    GPG_AGENT_INFO = "${config.services.gnome.gnome-keyring.socketDir}/gpg";
-  };
 }
