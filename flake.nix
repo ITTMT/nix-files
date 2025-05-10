@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     agenix.url = "github:ryantm/agenix";
+    secrets.url = "path:./secrets"
   };
 
   outputs = { 
