@@ -18,17 +18,9 @@
 
   networking.hostName = "nixos"; # Define your hostname.
 
-
-  age.identityPaths = [ "/home/ollie/.ssh/id_ed25519.pub"];
-  age.secrets.nm-secrets = {
-    file = ./../secrets/nm-secret.age;
-    owner = "root";
-    group = "root";
-  };
- 
   networking.networkmanager.ensureProfiles = {
     environmentFiles = [
-      config.age.screts.nm-secrets.path
+      config.age.secrets.nm-secrets.path
     ];
 
     profiles = {
