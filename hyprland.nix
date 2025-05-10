@@ -24,5 +24,6 @@
     hyprlock
     hypridle
     hyprpaper
+    dolphin
   ];
 }
