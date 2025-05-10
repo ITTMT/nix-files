@@ -1,0 +1,13 @@
+{ config, pkgs, lib, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    gnome-keyring
+    seahorse # Optional, a GUI for managing secrets
+  ];
+
+  # Make sure the keyring daemon is started on login
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "secrets" "ssh" "pkcs11" "gpg" ];
+  };
+}

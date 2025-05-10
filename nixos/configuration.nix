@@ -17,31 +17,14 @@
 
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.networkmanager.enable = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
-  networking.networkmanager.ensureProfiles = {
-    environmentFiles = [
-      config.age.secrets.nm-secrets.path
-    ];
-
-    profiles = {
-      Home = {
-        connection = {
-          id = "SmithFamily";
-          type = "wifi";
-        };
-        ipv4 = {
-          method = "auto";
-        };
-        wifi = {
-          mode = "infrastructure";
-          ssid = "SmithFamily";
-        };
-        wifi-security = {
-          key-mgmt = "wpa-psk";
-          psk = "$HOME_PSK";
-        };
-      };
-    };
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "secrets" "ssh" ];
   };
   
   # Set your time zone.
