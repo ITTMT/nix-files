@@ -28,7 +28,6 @@
         inherit system;
         modules = [
           ({ config, ... }: { nixpkgs.config.allowUnfree = true; })
-          agenix.nixosModules.default
           ./nixos/configuration.nix
           ./modules/software.nix
           # ./modules/kde.nix
