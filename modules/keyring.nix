@@ -6,7 +6,7 @@
   ];
 
   # Make sure the keyring daemon is started on login
-  services.gnome-keyring = {
+  services.gnome.gnome-keyring = {
     enable = true;
     components = [ "secrets" "ssh" "pkcs11" "gpg" ];
   };
