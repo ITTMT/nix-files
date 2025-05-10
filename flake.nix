@@ -37,7 +37,7 @@
           # ./kde.nix
           ./networking.nix
           ./nix-settings.nix
-          ./nikpkg.nix
+          ./nixpkg.nix
           ./screen.nix
           ./security.nix
           ./software.nix
