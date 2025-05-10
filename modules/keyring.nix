@@ -9,7 +9,6 @@
   # Make sure the keyring daemon is started on login
   services.gnome.gnome-keyring = {
     enable = true;
-    secrets.enable = true;
   };
 
   systemd.user.services.gnome-keyring-daemon = {
