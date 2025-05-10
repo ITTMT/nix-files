@@ -27,7 +27,7 @@
       myNixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          .boot-loader.nix
+          ./boot-loader.nix
           ./configuration.nix
           ./display-manager.nix
           ./firewall.nix
