@@ -1,11 +1,7 @@
-{ pkgs, catppuccin, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     catppuccin
   ];
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
+  
 }
