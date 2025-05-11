@@ -29,6 +29,8 @@
       myNixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
+          catppuccin.nixosModules.catppuccin
+
           ./boot-loader.nix
           ./configuration.nix
           ./display-manager.nix
