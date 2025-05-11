@@ -8,6 +8,7 @@
     stow
     age
     firefox
+    gamescope
   ];
 
   programs.firefox.enable = true;
