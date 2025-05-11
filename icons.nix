@@ -1,9 +1,6 @@
 { pkgs, catppuccin, ... }:
 {
-  catppuccin.nixosModules.catppuccin
-
-
-  catppuccin = {
+  catppuccin.nixosModules.catppuccin = {
     enable = true;
     flavor = "mocha";
   };
