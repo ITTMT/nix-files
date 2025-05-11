@@ -2,12 +2,14 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    catppuccin.url = "github:catppuccin/nix";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
   outputs = { 
     self, 
     nixpkgs, 
+    catppuccin,
     ... 
   }: 
   let
@@ -33,6 +35,7 @@
           ./firewall.nix
           ./fonts.nix
           ./hyprland.nix
+          ./icons.nix
           ./internationalisation.nix
           # ./kde.nix
           ./networking.nix
