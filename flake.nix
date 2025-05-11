@@ -2,7 +2,6 @@
   description = "A very basic flake";
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
     nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 

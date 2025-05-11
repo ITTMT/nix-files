@@ -1,6 +1,10 @@
 { pkgs, catppuccin, ... }:
 {
-  catppuccin.nixosModules.catppuccin = {
+  environment.systemPackages = with pkgs; [
+    catppuccin
+  ];
+
+  catppuccin = {
     enable = true;
     flavor = "mocha";
   };
