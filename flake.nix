@@ -26,6 +26,7 @@
   {
     nixosConfigurations = {
       myNixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
         inherit system;
         modules = [
           ./boot-loader.nix
