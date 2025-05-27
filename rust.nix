@@ -28,5 +28,8 @@
     cargo-features-manager
     bacon
     evcxr #rust repl
+    gcc
+    clang
+    llvm
   ];
 }

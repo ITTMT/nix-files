@@ -3,8 +3,7 @@
 {
   # Fonts
   fonts.packages = with pkgs; [
-    jetbrains-mono
-    nerd-font-patcher
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     noto-fonts-color-emoji
   ];
 }
