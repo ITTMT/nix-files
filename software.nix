@@ -22,9 +22,7 @@
     wlroots        # Optional, if using wlroots-based compositor like Hyprland/Sway
   ];
 
-  hardware.opengl = {
-    enable = true;  # enables OpenGL/Vulkan support system-wide
-  };
+  hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = ["amdgpu"];
 
