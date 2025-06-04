@@ -25,5 +25,6 @@
     hypridle
     hyprpaper
     nautilus
+    eww
   ];
 }
