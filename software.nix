@@ -24,8 +24,6 @@
 
   hardware.opengl = {
     enable = true;  # enables OpenGL/Vulkan support system-wide
-    driSupport = true;
-    driSupport32Bit = true;  # If you want 32-bit support as well
   };
 
   services.xserver.videoDrivers = ["amdgpu"];
