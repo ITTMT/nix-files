@@ -31,5 +31,9 @@
     gcc
     clang
     llvm
+    cmake
+    python3
+    pkg-config
+    ninja  # Optional but speeds up builds
   ];
 }
