@@ -9,6 +9,7 @@
     age
     firefox
     gamescope
+    spotify
 
     vulkan-tools         # Useful tools like vulkaninfo and vkcube
     vulkan-headers       # Vulkan API headers (not always needed directly but good to have)
