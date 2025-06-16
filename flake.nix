@@ -41,6 +41,7 @@
           ./networking.nix
           ./nix-settings.nix
           ./nixpkg.nix
+          ./power-management.nix
           ./rust.nix
           ./screen.nix
           ./security.nix
