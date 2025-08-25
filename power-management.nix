@@ -7,7 +7,5 @@
     ryzenadj
     cpupower
   ];
-
-  services.ryzenadj.enable = true;
   services.udev.packages = with pkgs; [ ryzenadj ];
 }
