@@ -5,7 +5,8 @@
   environment.systemPackages = with pkgs; [
     powertop
     ryzenadj
-    cpupower
+    linuxKernel.packages.linux_zen.cpupower
   ];
+
   services.udev.packages = with pkgs; [ ryzenadj ];
 }
