@@ -8,7 +8,6 @@
     cpupower
   ];
 
-  services.cpupower.enable = true;
   services.ryzenadj.enable = true;
-  services.udex.packages = with pkgs; [ ryzenadj ];
+  services.udev.packages = with pkgs; [ ryzenadj ];
 }
