@@ -10,7 +10,13 @@
     firefox
     gamescope
     spotify
+
+    jetbrains.rider
+    keepassxc
   ];
+
+  services.dbus.enable = true;
+  
 
   hardware.graphics.enable = true;
 
