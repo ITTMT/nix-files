@@ -1,7 +1,18 @@
 { pkgs, ... }:
 
 {
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.useNetworkd = true;
   networking.wireless.iwd.enable = true;
+  networking.useNetworkd = false;
+
+  networking.wireless.iwd.settings = {
+    General = {
+      EnableNetworkConfiguration = true;
+      RoamThreshold = -80;      # Only roam if signal is worse than -80dBm
+      AutoConnect = true;
+    };
+    Network = {
+      EnableIPv6 = true;
+      EnableIPv4 = true;
+    };
+  };
 }
