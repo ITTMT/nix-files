@@ -42,6 +42,7 @@
           ./networking.nix
           ./nix-settings.nix
           ./nixpkg.nix
+          ./ocaml.nix
           ./power-management.nix
           ./rust.nix
           ./screen.nix
