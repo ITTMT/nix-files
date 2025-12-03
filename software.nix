@@ -13,6 +13,7 @@
 
     jetbrains.rider
     keepassxc
+    obsidian
   ];
 
   services.dbus.enable = true;
