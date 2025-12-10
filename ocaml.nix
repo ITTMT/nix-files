@@ -3,9 +3,9 @@
 {
   environment.systemPackages = with pkgs; [
     ocaml
+    ocamlPackages.dune
     ocamlPackages.findlib
-    dune_2
+    ocamlPackages.merlin
     ocamlPackages.ocaml-lsp
-    opam
   ];
 }
