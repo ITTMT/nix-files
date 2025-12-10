@@ -6,5 +6,6 @@
     ocamlPackages.findlib
     dune_2
     ocamlPackages.ocaml-lsp
+    opam
   ];
 }
