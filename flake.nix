@@ -33,6 +33,7 @@
           ./boot-loader.nix
           ./configuration.nix
           ./display-manager.nix
+          ./file-manager.nix
           ./firewall.nix
           ./fonts.nix
           ./hyprland.nix

@@ -5,7 +5,7 @@
   users.users.ollie = {
     isNormalUser = true;
     description = "ollie";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" ];
+    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" "docker" ];
     packages = with pkgs; [
       spotify
       discord
