@@ -53,7 +53,6 @@
           ./sound.nix
           ./users.nix
 
-          # ✅ Hardware support for Framework 13 AMD AI 300 series
           inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
         ];
       };
