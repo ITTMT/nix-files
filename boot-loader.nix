@@ -17,4 +17,7 @@
     themePackages = [ pkgs.catppuccin-plymouth ];
     theme = "catppuccin-macchiato";
   };
+  
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableRedistributableFirmware = true;
 }

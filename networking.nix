@@ -3,6 +3,8 @@
 {
   networking.wireless.iwd.enable = true;
   networking.useNetworkd = false;
+  networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
 
   networking.wireless.iwd.settings = {
     General = {

@@ -5,6 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
   };
 
   outputs = { 
