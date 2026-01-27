@@ -13,6 +13,9 @@
     jetbrains.rider
     keepassxc
     obsidian
+    unzip
+    hyprshot
+    libnotify
   ];
 
   services.dbus.enable = true;
