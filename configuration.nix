@@ -8,11 +8,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  services.logind.extraConfig = ''
-    HandleLidSwitch = ignore;
-    HandleLidSwitchDocked = ignore;
-    HandleLidSwitchExternalPower = ignore;
-  '';
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
