@@ -6,6 +6,10 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkg.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -31,6 +35,7 @@
         specialArgs = { inherit inputs; };
         inherit system;
         modules = [
+
           ./boot-loader.nix
           ./configuration.nix
           ./display-manager.nix
@@ -52,7 +57,7 @@
           ./software.nix
           ./sound.nix
           ./users.nix
-
+          inputs.stylix.nixosModules.stylix
           inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
         ];
       };
