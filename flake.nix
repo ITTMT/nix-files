@@ -35,7 +35,7 @@
         specialArgs = { inherit inputs; };
         inherit system;
         modules = [
-
+          ./bluetooth.nix
           ./boot-loader.nix
           ./configuration.nix
           ./display-manager.nix
