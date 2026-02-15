@@ -16,6 +16,7 @@
     unzip
     hyprshot
     libnotify
+    direnv
   ];
 
   services.dbus.enable = true;
