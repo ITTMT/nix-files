@@ -8,7 +8,7 @@
     dolphin-overlay.url = "github:rumboon/dolphin-overlay";
     stylix = {
       url = "github:nix-community/stylix";
-      inputs.nixpkg.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
