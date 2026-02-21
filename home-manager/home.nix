@@ -11,6 +11,7 @@
 
   xdg.configFile."hypr".source = ../dotfiles/hypr;
   xdg.configFile."waybar".source = ../dotfiles/waybar;
+  xdg.configFile."nvim".source = ..dotfiles/nvim;
 
   programs.bash = {
     enable = true;
