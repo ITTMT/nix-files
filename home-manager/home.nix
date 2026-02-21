@@ -10,12 +10,30 @@
   ];
 
   xdg.configFile."hypr".source = ../dotfiles/hypr;
-  # xdg.configFile."waybar".source = ../dotfiles/waybar;
+  xdg.configFile."waybar".source = ../dotfiles/waybar;
 
   # Enable programs with managed configs
   programs.git = {
     enable = true;
-    settings.user.name = "ITTMT";
+    userName = "ITTMT";
+    userEmail = "oliver.iasmith@gmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+      
+      # Credential helpers for GitHub
+      "credential \"https://github.com\"" = {
+        helper = [
+          ""
+          "!${pkgs.gh}/bin/gh auth git-credential"
+        ];
+      };
+      "credential \"https://gist.github.com\"" = {
+        helper = [
+          ""
+          "!${pkgs.gh}/bin/gh auth git-credential"
+        ];
+      };
+    };
   };
 
   # Let Home Manager install and manage itself
