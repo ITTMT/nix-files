@@ -15,11 +15,14 @@
   # Enable programs with managed configs
   programs.git = {
     enable = true;
-    userName = "ITTMT";
-    userEmail = "oliver.iasmith@gmail.com";
+    settings = {
+      user = {
+        name = "ITTMT";
+        email = "oliver.iasmith@gmail.com";
+      };
+    };
     extraConfig = {
       init.defaultBranch = "main";
-      
       # Credential helpers for GitHub
       "credential \"https://github.com\"" = {
         helper = [
