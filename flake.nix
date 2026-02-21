@@ -13,7 +13,7 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
 
   outputs = { 
@@ -40,31 +40,31 @@
         specialArgs = { inherit inputs; };
         inherit system;
         modules = [
-          ./bluetooth.nix
-          ./boot-loader.nix
-          ./configuration.nix
-          ./display-manager.nix
-          ./file-manager.nix
-          ./firewall.nix
-          ./fonts.nix
-          ./hyprland.nix
-          ./icons.nix
-          ./internationalisation.nix
-          # ./kde.nix
-          ./networking.nix
-          ./nix-settings.nix
-          ./nixpkg.nix
-          ./ocaml.nix
-          ./power-management.nix
-          ./rust.nix
-          ./screen.nix
-          ./security.nix
-          ./software.nix
-          ./sound.nix
+          ./flakes/bluetooth.nix
+          ./flakes/boot-loader.nix
+          ./flakes/configuration.nix
+          ./flakes/display-manager.nix
+          ./flakes/file-manager.nix
+          ./flakes/firewall.nix
+          ./flakes/fonts.nix
+          ./flakes/hyprland.nix
+          ./flakes/icons.nix
+          ./flakes/internationalisation.nix
+          # ./flakes/kde.nix
+          ./flakes/networking.nix
+          ./flakes/nix-settings.nix
+          ./flakes/nixpkg.nix
+          ./flakes/ocaml.nix
+          ./flakes/power-management.nix
+          ./flakes/rust.nix
+          ./flakes/screen.nix
+          ./flakes/security.nix
+          ./flakes/software.nix
+          ./flakes/sound.nix
           inputs.home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ollie = import ./home.nix;
+            home-manager.users.ollie = import ./home-manager/home.nix;
           }
           ./users.nix
           inputs.stylix.nixosModules.stylix
