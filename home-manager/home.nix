@@ -50,8 +50,6 @@
         name = "ITTMT";
         email = "oliver.iasmith@gmail.com";
       };
-    };
-    extraConfig = {
       init.defaultBranch = "main";
       # Credential helpers for GitHub
       "credential \"https://github.com\"" = {
