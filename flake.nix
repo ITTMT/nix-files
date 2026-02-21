@@ -47,6 +47,7 @@
           ./flakes/file-manager.nix
           ./flakes/firewall.nix
           ./flakes/fonts.nix
+          ./flakes/gc.nix
           ./flakes/hyprland.nix
           ./flakes/icons.nix
           ./flakes/internationalisation.nix
