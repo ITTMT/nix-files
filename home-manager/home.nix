@@ -9,8 +9,8 @@
     fzf
   ];
 
-  # This is where your "Stow" logic lives
-  home.file.".config/alias-file".text = "alias gs='git status'";
+  xdg.configFile."hypr".source = ../dotfiles/hypr;
+  # xdg.configFile."waybar".source = ../dotfiles/waybar;
 
   # Enable programs with managed configs
   programs.git = {
