@@ -61,12 +61,12 @@
           ./flakes/security.nix
           ./flakes/software.nix
           ./flakes/sound.nix
+          ./flakes/users.nix
           inputs.home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.ollie = import ./home-manager/home.nix;
           }
-          ./users.nix
           inputs.stylix.nixosModules.stylix
           inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
         ];
