@@ -5,7 +5,6 @@
     gh
     vscode
     discord
-    stow
     age
     firefox
     gamescope
