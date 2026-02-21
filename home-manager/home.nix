@@ -15,7 +15,7 @@
   # Enable programs with managed configs
   programs.git = {
     enable = true;
-    userName = "ITTMT";
+    settings.user.name = "ITTMT";
   };
 
   # Let Home Manager install and manage itself
