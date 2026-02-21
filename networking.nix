@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  networking.hostName = "framework";
+  networking.hostName = "ollie";
   networking.networkmanager.enable = true;
 
   hardware.wirelessRegulatoryDatabase = true;

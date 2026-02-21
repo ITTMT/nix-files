@@ -10,11 +10,16 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
 
   outputs = { 
     self, 
     nixpkgs, 
+    home-manager,
     ... 
   } @ inputs: 
   let
@@ -31,7 +36,7 @@
   in
   {
     nixosConfigurations = {
-      myNixos = nixpkgs.lib.nixosSystem {
+      ollie = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         inherit system;
         modules = [
@@ -56,6 +61,11 @@
           ./security.nix
           ./software.nix
           ./sound.nix
+          inputs.home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ollie = import ./home.nix;
+          }
           ./users.nix
           inputs.stylix.nixosModules.stylix
           inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
