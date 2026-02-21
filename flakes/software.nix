@@ -16,6 +16,12 @@
     hyprshot
     libnotify
     direnv
+
+    gcc           # Required for Treesitter to compile parsers
+    ripgrep       # Required for Telescope
+    fd            # Required for Telescope
+    lua-language-server
+    stylua        # Lua formatter
   ];
 
   services.dbus.enable = true;
@@ -32,6 +38,8 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  
 
   programs.firefox.enable = true;
 

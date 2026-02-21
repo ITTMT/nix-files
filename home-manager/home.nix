@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
   home.stateVersion = "25.11"; # Check the HM manual for the latest version
@@ -11,7 +11,7 @@
 
   xdg.configFile."hypr".source = ../dotfiles/hypr;
   xdg.configFile."waybar".source = ../dotfiles/waybar;
-  xdg.configFile."nvim".source = ..dotfiles/nvim;
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/nvim";
 
   programs.bash = {
     enable = true;
