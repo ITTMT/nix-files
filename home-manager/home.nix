@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: 
+let 
+  dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
+in {
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
   home.stateVersion = "25.11"; # Check the HM manual for the latest version
@@ -9,9 +12,9 @@
     fzf
   ];
 
-  xdg.configFile."hypr".source = ../dotfiles/hypr;
-  xdg.configFile."waybar".source = ../dotfiles/waybar;
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/nvim";
+  xdg.configFile."hypr".source = dotfileLink "hypr";
+  xdg.configFile."waybar".source = dotfileLink "waybar";
+  xdg.configFile."nvim".source = dotfileLink "nvim";
 
   programs.bash = {
     enable = true;
@@ -26,7 +29,7 @@
     # Everything from your old .bashrc goes here
     bashrcExtra = ''
       alias rebuild="sudo nixos-rebuild switch --flake ~/mysystem#ollie" 
-      alias upgrade="nix flake update --flake ~/mysystem && sudo nixos-rebuild switch --flake ~/mysystem#ollie"
+      alias upgrade="cd ~/mysystem && nix flake update && git add . && sudo nixos-rebuild switch --flake .#ollie"
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
 
@@ -64,6 +67,29 @@
           ""
           "!${pkgs.gh}/bin/gh auth git-credential"
         ];
+      };
+    };
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "autumn_night_transparent";
+      editor.cursor-shape = {
+        normal = "block";
+        insert = "bar";
+        select = "underline";
+      };
+    };
+    languages.language = [{
+      name = "nix";
+      auto-format = true;
+      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+    }];
+    themes = {
+      autumn_night_transparent = {
+        "inherits" = "autumn_night";
+        "ui.background" = { };
       };
     };
   };
