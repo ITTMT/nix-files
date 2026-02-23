@@ -16,6 +16,7 @@
     hyprshot
     libnotify
     direnv
+    xmousepasteblock
 
     gcc           # Required for Treesitter to compile parsers
     ripgrep       # Required for Telescope
