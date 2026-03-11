@@ -2,6 +2,8 @@
 let 
   dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
 in {
+  imports = [ ./backlight.nix ];
+
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
   home.stateVersion = "25.11"; # Check the HM manual for the latest version
