@@ -17,6 +17,7 @@
     libnotify
     direnv
     xmousepasteblock
+    freecad
 
     gcc           # Required for Treesitter to compile parsers
     ripgrep       # Required for Telescope
