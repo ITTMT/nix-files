@@ -18,7 +18,10 @@
     direnv
     xmousepasteblock
     freecad
-
+    btop
+    htop
+    fzf
+    rocmPackages.rocm-smi
     gcc           # Required for Treesitter to compile parsers
     ripgrep       # Required for Telescope
     fd            # Required for Telescope
@@ -30,7 +33,16 @@
   
   virtualisation.docker.enable = true;
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd # OpenCL support
+    ];
+  };
+
+  environment.variables = {
+    HSA_OVERRIDE_GFX_VERSION = "11.0.2";
+  };
 
   services.xserver.videoDrivers = ["amdgpu"];
 

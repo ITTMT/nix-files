@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  networking.hostName = "ollie";
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   hardware.wirelessRegulatoryDatabase = true;
