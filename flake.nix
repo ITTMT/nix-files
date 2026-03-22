@@ -14,6 +14,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bosl2-src = {
+      url = "github:BelfrySCAD/BOSL2";
+      flake = false; 
+    };
   };
 
   outputs = { 

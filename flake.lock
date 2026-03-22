@@ -68,6 +68,22 @@
         "type": "github"
       }
     },
+    "bosl2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773906808,
+        "narHash": "sha256-7faq+PkZP/E8VLxun7yQPXNUZcRQFzM0FLLPprgyu/c=",
+        "owner": "BelfrySCAD",
+        "repo": "BOSL2",
+        "rev": "fb625bf243af208f4a15747b99e5e1c96a39ea9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BelfrySCAD",
+        "repo": "BOSL2",
+        "type": "github"
+      }
+    },
     "dolphin-overlay": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -266,6 +282,7 @@
     },
     "root": {
       "inputs": {
+        "bosl2-src": "bosl2-src",
         "dolphin-overlay": "dolphin-overlay",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
