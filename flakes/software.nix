@@ -21,6 +21,7 @@
     btop
     htop
     fzf
+    jq
     rocmPackages.rocm-smi
     gcc           # Required for Treesitter to compile parsers
     ripgrep       # Required for Telescope

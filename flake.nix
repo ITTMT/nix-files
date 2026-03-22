@@ -56,6 +56,7 @@
           ./flakes/nix-settings.nix
           ./flakes/nixpkg.nix
           ./flakes/ocaml.nix
+          ./flakes/openscad.nix
           ./flakes/power-management.nix
           ./flakes/rust.nix
           ./flakes/screen.nix

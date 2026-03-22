@@ -13,7 +13,6 @@
     "pulseaudio",
     "cpu",
     "battery"
-    
   ],
   "hyprland/workspaces": {
     "on-click": "activate",

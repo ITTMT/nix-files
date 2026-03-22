@@ -29,8 +29,8 @@ in {
 
     # Everything from your old .bashrc goes here
     bashrcExtra = ''
-      alias rebuild="sudo nixos-rebuild switch --flake ~/mysystem#nixos" 
-      alias upgrade="cd ~/mysystem && nix flake update && git add . && sudo nixos-rebuild switch --flake .#nixos"
+      alias rebuild="sudo nixos-rebuild switch --flake ~/mysystem#ollie" 
+      alias upgrade="cd ~/mysystem && nix flake update && git add . && sudo nixos-rebuild switch --flake .#ollie"
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
 
