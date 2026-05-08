@@ -26,57 +26,42 @@
     home-manager,
     ... 
   } @ inputs: 
-  let
-    system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];    
     };
-  
-  in
-  {
-    nixosConfigurations = {
-      ollie = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        inherit system;
-        modules = [
-          ./flakes/bluetooth.nix
-          ./flakes/boot-loader.nix
-          ./flakes/configuration.nix
-          ./flakes/display-manager.nix
-          ./flakes/file-manager.nix
-          ./flakes/firewall.nix
-          ./flakes/fonts.nix
-          ./flakes/gc.nix
-          ./flakes/hyprland.nix
-          ./flakes/icons.nix
-          ./flakes/internationalisation.nix
-          # ./flakes/kde.nix
-          ./flakes/networking.nix
-          ./flakes/nix-settings.nix
-          ./flakes/nixpkg.nix
-          ./flakes/ocaml.nix
-          ./flakes/openscad.nix
-          ./flakes/power-management.nix
-          ./flakes/rust.nix
-          ./flakes/screen.nix
-          ./flakes/security.nix
-          ./flakes/software.nix
-          ./flakes/sound.nix
-          ./flakes/users.nix
-          inputs.home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.ollie = import ./home-manager/home.nix;
-          }
-          inputs.stylix.nixosModules.stylix
-          inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
-        ];
-      };
+
+    nixpkgs.config.allowUnfree = true;
+
+    nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/framework/configuration.nix
+        ./hosts/framework/hardware-configuration.nix
+
+        ./home/users.nix
+
+        # Toggle Desktops
+        ./modules/desktops/kde.nix
+        #./modules/desktops/hyprland.nix
+
+        ./modules/common/fonts.nix
+        ./modules/common/gc.nix
+        ./modules/common/icons.nix
+        ./modules/common/internationalisation.nix
+        ./modules/common/ocaml.nix
+        ./modules/common/openscad.nix
+        ./modules/common/rust.nix
+        ./modules/common/screen.nix
+        ./modules/common/software.nix
+
+        inputs.home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.ollie = import ./home-manager/home.nix;
+        }
+        inputs.stylix.nixosModules.stylix
+        inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
+      ];
     };
   };
 }
