@@ -13,7 +13,4 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-
-  
-  boot.loader.systemd-boot.configurationLimit = 5;
 }

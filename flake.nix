@@ -20,29 +20,18 @@
     };
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
-    home-manager,
-    ... 
-  } @ inputs: 
-    nix.settings = {
-      experimental-features = [ "nix-command" "flakes" ];    
-    };
-
-    nixpkgs.config.allowUnfree = true;
-
+  outputs = { self, nixpkgs, ... } @ inputs: {
     nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      # This passes our inputs (like stylix, hardware, etc) into all our modules
+      specialArgs = { inherit inputs; }; 
       modules = [
         ./hosts/framework/configuration.nix
-        ./hosts/framework/hardware-configuration.nix
-
         ./home/users.nix
 
         # Toggle Desktops
         ./modules/desktops/kde.nix
-        #./modules/desktops/hyprland.nix
+        # ./modules/desktops/hyprland.nix
 
         ./modules/common/fonts.nix
         ./modules/common/gc.nix
