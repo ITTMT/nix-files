@@ -23,6 +23,7 @@
     fzf
     jq
     rocmPackages.rocm-smi
+    ryzenadj
     gcc           # Required for Treesitter to compile parsers
     ripgrep       # Required for Telescope
     fd            # Required for Telescope
@@ -33,6 +34,8 @@
   services.dbus.enable = true;
   
   virtualisation.docker.enable = true;
+
+  boot.kernelParams = [ "iomem=relaxed" ];
 
   hardware.graphics = {
     enable = true;

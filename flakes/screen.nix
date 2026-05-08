@@ -25,8 +25,6 @@ let
 in
 # ... rest of your screen.nix remains the same
 {
-  programs.light.enable = true;
-
   # I2C support
   hardware.i2c.enable = true;
 
@@ -38,8 +36,12 @@ in
     brightnessctl
   ];
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
-  boot.kernelModules = [ "i2c-dev" "ddcci_backlight" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ 
+    ryzen-smu
+    ddcci-driver 
+  ];
+
+  boot.kernelModules = [ "i2c-dev" "ddcci_backlight" "ryzen_smu" ];
 
   services.udev.extraRules = ''
     # 1. Grant permissions to the I2C buses themselves

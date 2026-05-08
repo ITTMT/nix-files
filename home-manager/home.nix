@@ -33,6 +33,8 @@ in {
       alias upgrade="cd ~/mysystem && nix flake update && git add . && sudo nixos-rebuild switch --flake .#ollie"
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
+      alias battery_saver="ryzenadj --stapm-limit=10000 --fast-limit=10000 --slow-limit=10000"
+      alias battery_default="ryzenadj --stapm-limit=46000 --fast-limit=46000 --slow-limit=35000"
 
       eval "$(direnv hook bash)"
       
