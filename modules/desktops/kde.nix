@@ -24,7 +24,7 @@
 
   # Tiling and Utilities
   environment.systemPackages = with pkgs; [
-    # kdePackages.polonium     # This provides the Hyprland-style tiling
+    polonium     # This provides the Hyprland-style tiling
     kdePackages.spectacle    # Better screenshots
     kdePackages.kate         # Useful GUI editor for quick tweaks
     wl-clipboard            # System-wide clipboard support for Wayland
