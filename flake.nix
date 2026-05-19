@@ -6,6 +6,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     dolphin-overlay.url = "github:rumboon/dolphin-overlay";
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +51,12 @@
         inputs.home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.ollie = import ./home-manager/home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+
+          # --- CLEANEST APPROACH ---
+          home-manager.users.ollie = {
+            imports = [ ./home-manager/home.nix ];
+          };
         }
         inputs.stylix.nixosModules.stylix
         inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, inputs, ... }: # Added inputs here
 let 
   dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
 in {
@@ -6,7 +6,6 @@ in {
     ./backlight.nix
     ./emacs.nix
   ];
-  
 
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
