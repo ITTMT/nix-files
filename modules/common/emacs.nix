@@ -3,8 +3,8 @@
 {
   # 1. System packages required for Doom Emacs to run and compile code
   environment.systemPackages = with pkgs; [
-    # The Emacs binary itself (compiled with native compilation and tree-sitter support)
-    emacs29-pgtk   # Use emacs-gtk if you are on standard X11, pgtk is perfect for Wayland/KDE
+    # Fixed the package name from emacs29-pgtk to emacs-pgtk
+    emacs-pgtk   # Built with native PGTK support for pure Wayland execution under KDE
 
     # Doom core dependencies
     git
@@ -24,7 +24,7 @@
     nix-direnv.enable = true;
   };
 
-  # Optional: Adds standard environment variables to make integration smoother
+  # Adds standard environment variables to make integration smoother
   environment.sessionVariables = {
     EDITOR = "emacsclient -c -a 'emacs'";
   };

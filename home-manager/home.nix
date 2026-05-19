@@ -2,7 +2,11 @@
 let 
   dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
 in {
-  imports = [ ./backlight.nix ];
+  imports = [ 
+    ./backlight.nix
+    ./emacs.nix
+  ];
+  
 
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
