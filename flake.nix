@@ -35,6 +35,10 @@
 
         ./modules/common/fonts.nix
         ./modules/common/gc.nix
+        
+        # --- ADDED EMACS MODULE HERE ---
+        ./modules/common/emacs.nix
+        
         ./modules/common/icons.nix
         ./modules/common/internationalisation.nix
         ./modules/common/ocaml.nix
