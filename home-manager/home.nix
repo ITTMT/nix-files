@@ -45,6 +45,8 @@ in {
       alias battery_saver="ryzenadj --stapm-limit=10000 --fast-limit=10000 --slow-limit=10000"
       alias battery_default="ryzenadj --stapm-limit=46000 --fast-limit=46000 --slow-limit=35000"
 
+      vs-server = "vintagestory-server --dataPath ~/vintagestory-server/data";
+
       eval "$(direnv hook bash)"
     '';
 
