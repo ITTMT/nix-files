@@ -69,4 +69,14 @@
     enable = true;
     package = pkgs.fprintd-tod;
   };
+
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];
+    allowedTCPPorts = [ 42420 ];
+    allowedUDPPorts = [ 42420 ];
+  };
+
+  # Enable the Tailscale service daemon
+  services.tailscale.enable = true;
 }

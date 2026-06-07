@@ -10,6 +10,7 @@
     gamescope
     spotify
     jetbrains.rider
+    vintagestory
     keepassxc
     obsidian
     unzip
@@ -21,6 +22,7 @@
     btop
     htop
     fzf
+    tailscale
     jq
     rocmPackages.rocm-smi
     ryzenadj

@@ -9,12 +9,15 @@
     enable = true;
     emacs = pkgs.emacs-pgtk; 
 
-    # Instead of pointing to a locked store directory, we pass the file contents.
-    # This allows the builder to reconstruct DOOMDIR with proper execution permissions.
-    doomModules = {
-      initGnuEl    = builtins.readFile ../dotfiles/doom/init.el;
-      configGnuEl  = builtins.readFile ../dotfiles/doom/config.el;
-      packagesGnuEl = builtins.readFile ../dotfiles/doom/packages.el;
-    };
+    # 1. Point directly to your repository folder. Nix will read the content.
+    doomDir = ../dotfiles/doom; 
+
+    # 2. Tell Doom to put its build artifacts, caches, and state files here 
+    # instead of crashing against the immutable Nix store.
+    doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
+  };
+
+  services.emacs = {
+    enable = true;
   };
 }

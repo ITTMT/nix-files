@@ -28,6 +28,8 @@ in {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch --flake ~/mysystem";
       v = "nvim";
+      e = "emacsclient -c -a ''"; # Opens a graphical frame. If daemon is dead, starts it.
+      et = "emacsclient -t -a ''"; # Opens directly inside your terminal window.
     };
 
     # Everything from your old .bashrc goes here
