@@ -7,6 +7,8 @@ in {
     ./emacs.nix
   ];
 
+
+
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
   home.stateVersion = "25.11"; # Check the HM manual for the latest version
@@ -16,12 +18,25 @@ in {
     
   ];
 
+  home.sessionVariables = {
+    EDITOR = "code";
+  };
+
+  home.language = {
+    base = "en_GB.UTF-8";
+    address = "en_GB.UTF-8";
+    monetary = "en_GB.UTF-8";
+    paper = "en_GB.UTF-8";
+    time = "en_GB.UTF-8";
+  };
+
   xdg.configFile."hypr".source = dotfileLink "hypr";
   xdg.configFile."waybar".source = dotfileLink "waybar";
   xdg.configFile."nvim".source = dotfileLink "nvim";
 
   programs.bash = {
     enable = true;
+    package = pkgs.bashInteractive; # Ensures readline and programmable completion are enabled
     
     # This replaces your aliases
     shellAliases = {
@@ -30,6 +45,7 @@ in {
       v = "nvim";
       e = "emacsclient -c -a ''"; # Opens a graphical frame. If daemon is dead, starts it.
       et = "emacsclient -t -a ''"; # Opens directly inside your terminal window.
+      vs-server = "vintagestory-server --dataPath ~/vintagestory-server/data";
     };
 
     # Everything from your old .bashrc goes here
@@ -41,12 +57,6 @@ in {
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
       
-      # Battery optimizations for your Ryzen AI 300
-      alias battery_saver="ryzenadj --stapm-limit=10000 --fast-limit=10000 --slow-limit=10000"
-      alias battery_default="ryzenadj --stapm-limit=46000 --fast-limit=46000 --slow-limit=35000"
-
-      vs-server = "vintagestory-server --dataPath ~/vintagestory-server/data";
-
       eval "$(direnv hook bash)"
     '';
 
