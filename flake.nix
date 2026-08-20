@@ -39,6 +39,7 @@
         
         # --- ADDED EMACS MODULE HERE ---
         ./modules/common/emacs.nix
+        ./modules/common/llm.nix
         
         ./modules/common/icons.nix
         ./modules/common/internationalisation.nix

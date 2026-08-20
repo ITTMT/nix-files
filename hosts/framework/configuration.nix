@@ -16,6 +16,7 @@
   # --- SYSTEM SETTINGS ---
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  programs.nix-ld.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";

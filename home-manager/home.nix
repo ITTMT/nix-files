@@ -1,4 +1,5 @@
-{ config, pkgs, inputs, ... }: # Added inputs here
+{ config, pkgs, inputs, ... }:
+
 let 
   dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
 in {
@@ -7,16 +8,11 @@ in {
     ./emacs.nix
   ];
 
-
-
   home.username = "ollie";
   home.homeDirectory = "/home/ollie";
-  home.stateVersion = "25.11"; # Check the HM manual for the latest version
+  home.stateVersion = "25.11";
 
-  # Install packages for the user
-  home.packages = with pkgs; [
-    
-  ];
+  home.packages = with pkgs; [ ];
 
   home.sessionVariables = {
     EDITOR = "code";
@@ -36,19 +32,17 @@ in {
 
   programs.bash = {
     enable = true;
-    package = pkgs.bashInteractive; # Ensures readline and programmable completion are enabled
+    package = pkgs.bashInteractive;
     
-    # This replaces your aliases
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch --flake ~/mysystem";
       v = "nvim";
-      e = "emacsclient -c -a ''"; # Opens a graphical frame. If daemon is dead, starts it.
-      et = "emacsclient -t -a ''"; # Opens directly inside your terminal window.
+      e = "emacsclient -c -a ''";
+      et = "emacsclient -t -a ''";
       vs-server = "vintagestory-server --dataPath ~/vintagestory-server/data";
     };
 
-    # Everything from your old .bashrc goes here
     bashrcExtra = ''
       # Update these to use #framework
       alias rebuild="sudo nixos-rebuild switch --flake ~/mysystem#framework" 
@@ -56,18 +50,20 @@ in {
       
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
-      
-      eval "$(direnv hook bash)"
     '';
 
-    # Everything from your old .bash_profile goes here
-    # (Environment variables that should only be set once at login)
     profileExtra = ''
-      # Example: gpg setup or session-wide variables
+      # Session-wide environment variables
     '';
   };
 
-  # Enable programs with managed configs
+  # Native direnv + nix-direnv integration
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.git = {
     enable = true;
     settings = {
@@ -76,7 +72,6 @@ in {
         email = "oliver.iasmith@gmail.com";
       };
       init.defaultBranch = "main";
-      # Credential helpers for GitHub
       "credential \"https://github.com\"" = {
         helper = [
           ""
@@ -115,6 +110,5 @@ in {
     };
   };
 
-  # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 }
