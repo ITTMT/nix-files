@@ -17,51 +17,54 @@
     };
     bosl2-src = {
       url = "github:BelfrySCAD/BOSL2";
-      flake = false; 
+      flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs: {
-    nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      # This passes our inputs (like stylix, hardware, etc) into all our modules
-      specialArgs = { inherit inputs; }; 
-      modules = [
-        ./hosts/framework/configuration.nix
-        ./home/users.nix
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    {
+      nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        # This passes our inputs (like stylix, hardware, etc) into all our modules
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/framework/configuration.nix
+          ./home/users.nix
 
-        # Toggle Desktops
-        ./modules/desktops/kde.nix
-        # ./modules/desktops/hyprland.nix
+          # Toggle Desktops
+          ./modules/desktops/kde.nix
+          # ./modules/desktops/hyprland.nix
 
-        ./modules/common/fonts.nix
-        ./modules/common/gc.nix
-        
-        # --- ADDED EMACS MODULE HERE ---
-        ./modules/common/emacs.nix
-        ./modules/common/llm.nix
-        
-        ./modules/common/icons.nix
-        ./modules/common/internationalisation.nix
-        ./modules/common/ocaml.nix
-        ./modules/common/openscad.nix
-        ./modules/common/rust.nix
-        ./modules/common/screen.nix
-        ./modules/common/software.nix
+          ./modules/common/fonts.nix
+          ./modules/common/gc.nix
 
-        inputs.home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          # --- ADDED EMACS MODULE HERE ---
+          ./modules/common/emacs.nix
+          ./modules/common/llm.nix
 
-          # --- CLEANEST APPROACH ---
-          home-manager.users.ollie = {
-            imports = [ ./home-manager/home.nix ];
-          };
-        }
-        inputs.stylix.nixosModules.stylix
-        inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
-      ];
+          ./modules/common/icons.nix
+          ./modules/common/internationalisation.nix
+          ./modules/common/ocaml.nix
+          ./modules/common/openscad.nix
+          ./modules/common/rust.nix
+          ./modules/common/screen.nix
+          ./modules/common/software.nix
+
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+
+            # --- CLEANEST APPROACH ---
+            home-manager.users.ollie = {
+              imports = [ ./home-manager/home.nix ];
+            };
+          }
+          inputs.stylix.nixosModules.stylix
+          inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
+        ];
+      };
     };
-  };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 
 {
   services.ollama = {
@@ -12,5 +12,8 @@
     port = 8080;
   };
 
-  users.users.ollie.extraGroups = [ "video" "render" ];
+  users.users.ollie.extraGroups = [
+    "video"
+    "render"
+  ];
 }

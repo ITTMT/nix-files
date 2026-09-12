@@ -7,7 +7,7 @@
     git
     ripgrep
     fd
-    
+
     # Toolchains needed by Doom to compile native source extensions (vterm, treesitter parsers)
     gnumake
     cmake

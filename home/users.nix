@@ -6,7 +6,15 @@
     isNormalUser = true;
     shell = pkgs.bashInteractive;
     description = "ollie";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "input"
+      "wheel"
+      "video"
+      "audio"
+      "tss"
+      "docker"
+    ];
     packages = with pkgs; [
       spotify
       discord

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # Enable the KDE Plasma Desktop Environment
@@ -15,7 +20,7 @@
   };
 
   # Configure keymap
-  # Note: Plasma 6 usually manages this via its own UI, but setting it here 
+  # Note: Plasma 6 usually manages this via its own UI, but setting it here
   # ensures the login screen (SDDM) uses the correct layout.
   services.xserver.xkb = {
     layout = "gb,us";
@@ -24,9 +29,9 @@
 
   # Tiling and Utilities
   environment.systemPackages = with pkgs; [
-    kdePackages.spectacle    # Better screenshots
-    kdePackages.kate         # Useful GUI editor for quick tweaks
-    wl-clipboard            # System-wide clipboard support for Wayland
+    kdePackages.spectacle # Better screenshots
+    kdePackages.kate # Useful GUI editor for quick tweaks
+    wl-clipboard # System-wide clipboard support for Wayland
   ];
 
   # Efficiency & Clean-up

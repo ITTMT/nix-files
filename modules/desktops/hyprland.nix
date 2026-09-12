@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.hyprland = {
     enable = true;
@@ -42,7 +47,7 @@
   boot.initrd.verbose = false;
   boot.initrd.systemd.enable = true;
   boot.initrd.availableKernelModules = [ "i915" ];
-  boot.initrd.kernelModules          = [ "i915" ];
+  boot.initrd.kernelModules = [ "i915" ];
   boot.consoleLogLevel = 3;
   boot.plymouth = {
     enable = true;
@@ -50,7 +55,7 @@
     themePackages = [ pkgs.catppuccin-plymouth ];
     theme = "catppuccin-macchiato";
   };
-  
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.enableRedistributableFirmware = true;
 
@@ -62,16 +67,19 @@
         command = "${pkgs.tuigreet}/bin/tuigreet \
           --time --time-format '%I:%M %p | %a • %h | %F' \
           --cmd 'uwsm start hyprland'";
-        user    = "greeter";
+        user = "greeter";
       };
     };
   };
 
   users.users.greeter = {
     isNormalUser = false;
-    description  = "greetd greeter user";
-    extraGroups  = [ "video" "audio" ];
-    linger        = true;
+    description = "greetd greeter user";
+    extraGroups = [
+      "video"
+      "audio"
+    ];
+    linger = true;
   };
 
   networking.hostName = "nixos";
@@ -85,12 +93,12 @@
 
   environment.systemPackages = with pkgs; [
     kitty
-    waybar        # A status bar for Wayland
-    wofi          # A launcher (similar to rofi, but for Wayland)
-    mako          # A notification daemon for Wayland
-    wl-clipboard  # Clipboard utilities for Wayland
-    grim          # Screenshot tool for Wayland
-    slurp         # Region selector for screenshots
+    waybar # A status bar for Wayland
+    wofi # A launcher (similar to rofi, but for Wayland)
+    mako # A notification daemon for Wayland
+    wl-clipboard # Clipboard utilities for Wayland
+    grim # Screenshot tool for Wayland
+    slurp # Region selector for screenshots
     xdg-desktop-portal-hyprland # For Wayland desktop portals
     hyprcursor
     hyprlock
@@ -102,7 +110,7 @@
     pavucontrol
     tuigreet
     kdePackages.dolphin
-    kdePackages.qt6ct        # The configuration tool for Qt6
+    kdePackages.qt6ct # The configuration tool for Qt6
     networkmanagerapplet
     bluez
     blueman

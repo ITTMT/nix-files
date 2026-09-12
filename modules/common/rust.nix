@@ -8,7 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
-    taplo #toml formatter & lsp
+    taplo # toml formatter & lsp
     cargo-watch
     cargo-deny
     cargo-audit
@@ -27,13 +27,13 @@
     cargo-feature
     cargo-features-manager
     bacon
-    evcxr #rust repl
+    evcxr # rust repl
     gcc
     clang
     llvm
     cmake
     python3
     pkg-config
-    ninja  # Optional but speeds up builds
+    ninja # Optional but speeds up builds
   ];
 }

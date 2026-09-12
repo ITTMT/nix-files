@@ -1,6 +1,11 @@
-{ config, pkgs, lib, ... }:
 {
- environment.systemPackages = with pkgs; [
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  environment.systemPackages = with pkgs; [
     git
     gh
     vscode
@@ -26,17 +31,18 @@
     jq
     rocmPackages.rocm-smi
     ryzenadj
-    gcc           # Required for Treesitter to compile parsers
-    ripgrep       # Required for Telescope
-    fd            # Required for Telescope
+    gcc # Required for Treesitter to compile parsers
+    ripgrep # Required for Telescope
+    fd # Required for Telescope
     lua-language-server
-    stylua        # Lua formatter
+    stylua # Lua formatter
     android-studio
     jetbrains.rider
+    nixfmt
   ];
 
   services.dbus.enable = true;
-  
+
   virtualisation.docker.enable = true;
 
   boot.kernelParams = [ "iomem=relaxed" ];
@@ -52,16 +58,13 @@
     HSA_OVERRIDE_GFX_VERSION = "11.0.2";
   };
 
-  services.xserver.videoDrivers = ["amdgpu"];
-
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
   };
-
-  
 
   programs.firefox.enable = true;
 

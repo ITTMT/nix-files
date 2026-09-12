@@ -1,9 +1,16 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
-let 
-  dotfileLink = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
-in {
-  imports = [ 
+let
+  dotfileLink =
+    path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/mysystem/dotfiles/${path}";
+in
+{
+  imports = [
     ./backlight.nix
     ./emacs.nix
   ];
@@ -33,7 +40,7 @@ in {
   programs.bash = {
     enable = true;
     package = pkgs.bashInteractive;
-    
+
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch --flake ~/mysystem";
@@ -47,7 +54,7 @@ in {
       # Update these to use #framework
       alias rebuild="sudo nixos-rebuild switch --flake ~/mysystem#framework" 
       alias upgrade="cd ~/mysystem && nix flake update && git add . && sudo nixos-rebuild switch --flake .#framework"
-      
+
       alias cleanup="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-collect-garbage -d"
       alias generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
     '';
@@ -97,11 +104,13 @@ in {
         select = "underline";
       };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-    }];
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      }
+    ];
     themes = {
       autumn_night_transparent = {
         "inherits" = "autumn_night";

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   # 1. The original package
@@ -11,17 +16,19 @@ let
     exec ${orca}/bin/orca-slicer "$@"
   '';
 
-
   # 4. Join them all together
   scaled-orca = pkgs.symlinkJoin {
     name = "orca-slicer";
-    paths = [ orca-scaled-bin orca ];
+    paths = [
+      orca-scaled-bin
+      orca
+    ];
   };
 in
 {
   services.octoprint.enable = true;
 
-  environment.systemPackages = [ 
+  environment.systemPackages = [
     pkgs.openscad-unstable
     pkgs.printrun
     scaled-orca

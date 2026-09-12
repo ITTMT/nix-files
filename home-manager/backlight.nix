@@ -3,7 +3,10 @@
 let
   backlight-sync = pkgs.writeShellApplication {
     name = "backlight-sync";
-    runtimeInputs = [ pkgs.brightnessctl pkgs.coreutils ];
+    runtimeInputs = [
+      pkgs.brightnessctl
+      pkgs.coreutils
+    ];
     text = ''
       # Update laptop screen
       brightnessctl -d "amdgpu_bl1" set "$1"
@@ -16,7 +19,12 @@ let
 
   monitor-fix = pkgs.writeShellApplication {
     name = "monitor-fix";
-    runtimeInputs = [ pkgs.ddcutil pkgs.coreutils pkgs.gnused pkgs.kmod ];
+    runtimeInputs = [
+      pkgs.ddcutil
+      pkgs.coreutils
+      pkgs.gnused
+      pkgs.kmod
+    ];
     text = ''
       echo "Stopping existing ddcci processes..."
       # Force unbind everything to clear the 'Red' links
@@ -53,6 +61,10 @@ let
       fi
     '';
   };
-in {
-  home.packages = [ backlight-sync monitor-fix ];
+in
+{
+  home.packages = [
+    backlight-sync
+    monitor-fix
+  ];
 }

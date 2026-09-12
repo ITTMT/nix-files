@@ -28,7 +28,10 @@ in
   # I2C support
   hardware.i2c.enable = true;
 
-  users.users.ollie.extraGroups = [ "i2c" "video" ];
+  users.users.ollie.extraGroups = [
+    "i2c"
+    "video"
+  ];
 
   environment.systemPackages = with pkgs; [
     wlsunset
@@ -36,12 +39,16 @@ in
     brightnessctl
   ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
     ryzen-smu
-    ddcci-driver 
+    ddcci-driver
   ];
 
-  boot.kernelModules = [ "i2c-dev" "ddcci_backlight" "ryzen_smu" ];
+  boot.kernelModules = [
+    "i2c-dev"
+    "ddcci_backlight"
+    "ryzen_smu"
+  ];
 
   services.udev.extraRules = ''
     # 1. Grant permissions to the I2C buses themselves
