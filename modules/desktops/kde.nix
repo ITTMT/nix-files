@@ -18,8 +18,8 @@
   # Note: Plasma 6 usually manages this via its own UI, but setting it here 
   # ensures the login screen (SDDM) uses the correct layout.
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "gb,us";
+    options = "grp:alt_shift_toggle"; # Toggles on Alt + Shift
   };
 
   # Tiling and Utilities

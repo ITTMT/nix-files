@@ -9,7 +9,6 @@
     firefox
     gamescope
     spotify
-    jetbrains.rider
     vintagestory
     keepassxc
     obsidian
@@ -18,6 +17,7 @@
     libnotify
     direnv
     xmousepasteblock
+    haruna
     freecad
     btop
     htop
@@ -31,6 +31,8 @@
     fd            # Required for Telescope
     lua-language-server
     stylua        # Lua formatter
+    android-studio
+    jetbrains.rider
   ];
 
   services.dbus.enable = true;
