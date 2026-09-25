@@ -38,6 +38,8 @@
     stylua # Lua formatter
     android-studio
     jetbrains.rider
+    jetbrains.idea
+    jetbrains.webstorm
     nixfmt
   ];
 
