@@ -24,7 +24,6 @@
     xmousepasteblock
     haruna
     freecad
-    btop
     htop
     fzf
     tailscale

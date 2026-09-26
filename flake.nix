@@ -50,6 +50,7 @@
           ./modules/common/rust.nix
           ./modules/common/screen.nix
           ./modules/common/software.nix
+          ./modules/common/terminal.nix
 
           inputs.home-manager.nixosModules.home-manager
           {
