@@ -1,0 +1,34 @@
+# --- Theme & Colors ---
+
+# 'tokyonight' and 'catppuccin-mocha' are excellent, highly-polished dark themes built-in.
+
+theme = tokyonight
+
+# --- Window & Appearance ---
+
+# Adds a frosted glass effect (blur requires your compositor to support it)
+
+background-opacity = 0.85
+background-blur-radius = 20
+
+# Gives the text breathing room from the edges
+
+window-padding-x = 15
+window-padding-y = 15
+
+# Removes the bulky title bar for a cleaner, flush look
+
+window-decoration = false
+window-theme = dark
+
+# --- Font & Cursor ---
+
+# Uses a sleek blinking bar instead of a solid block
+
+cursor-style = bar
+cursor-style-blink = true
+
+# (Optional) If you have a Nerd Font installed for your CLI tools
+
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
