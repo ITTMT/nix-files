@@ -36,13 +36,13 @@ in
   xdg.configFile."hypr".source = dotfileLink "hypr";
   xdg.configFile."waybar".source = dotfileLink "waybar";
   xdg.configFile."nvim".source = dotfileLink "nvim";
+  xdg.configFile."ghostty".source = dotfileLink "ghostty";
 
   programs.bash = {
     enable = true;
     package = pkgs.bashInteractive;
 
     shellAliases = {
-      ll = "ls -l";
       update = "sudo nixos-rebuild switch --flake ~/mysystem";
       v = "nvim";
       e = "emacsclient -c -a ''";
@@ -62,6 +62,30 @@ in
     profileExtra = ''
       # Session-wide environment variables
     '';
+  };
+
+  programs.eza = {
+    enable = true;
+    icons = "auto"; # This tells Home Manager to inject --icons into the aliases
+    git = true; # Also shows git status for files in repositories
+  };
+
+  programs.bat.enable = true;
+  programs.btop.enable = true;
+
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
   };
 
   # Native direnv + nix-direnv integration
