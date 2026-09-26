@@ -48,6 +48,7 @@ in
       e = "emacsclient -c -a ''";
       et = "emacsclient -t -a ''";
       vs-server = "vintagestory-server --dataPath ~/vintagestory-server/data";
+      lg = "lazygit";
     };
 
     bashrcExtra = ''
@@ -69,6 +70,8 @@ in
     icons = "auto"; # This tells Home Manager to inject --icons into the aliases
     git = true; # Also shows git status for files in repositories
   };
+
+  programs.lazygit.enable = true;
 
   programs.bat.enable = true;
   programs.btop.enable = true;
